@@ -1,6 +1,5 @@
 package me.blackvein.quests.prompts;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -178,7 +177,7 @@ public class ItemStackPrompt extends FixedSetPrompt implements ColorUtil {
                 short data = -1;
                 Map<Enchantment, Integer> enchs = null;
                 String display = null;
-                List<String> lore = null;
+                LinkedList<String> lore = null;
 
                 if (cc.getSessionData("tempData") != null) {
                     data = (Short) cc.getSessionData("tempData");
@@ -190,12 +189,7 @@ public class ItemStackPrompt extends FixedSetPrompt implements ColorUtil {
                     display = ChatColor.translateAlternateColorCodes('&', (String) cc.getSessionData("tempDisplay"));
                 }
                 if (cc.getSessionData("tempLore") != null) {
-                    lore = new ArrayList<String>();
-                    LinkedList<String> loadedLore = (LinkedList<String>) cc.getSessionData("tempLore");
-                    for (String line : loadedLore)
-                    {
-                        lore.add(ChatColor.translateAlternateColorCodes('&', line));
-                    }
+                    lore = (LinkedList<String>) cc.getSessionData("tempLore");
                 }
 
                 ItemStack stack = new ItemStack(Material.matchMaterial(name), amount);
